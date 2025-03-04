@@ -1,5 +1,5 @@
 package tour0
 
 func LastFunctionName() string {
-	return ""
+	return "fibonacci"
 }
