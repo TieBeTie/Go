@@ -15,7 +15,7 @@ import (
 func main() {
 	urls := os.Args[1:]
 	ch := make(chan string)
-	max_seconds := 0.0
+	maxSeconds := 0.0
 
 	for _, url := range urls {
 		go func(url string) {
@@ -34,11 +34,11 @@ func main() {
 				return
 			}
 			ch <- fmt.Sprintf("%0.2fs\t%d  %s", time.Since(start).Seconds(), len(body), url)
-			max_seconds = math.Max(max_seconds, time.Since(start).Seconds())
+			maxSeconds = math.Max(maxSeconds, time.Since(start).Seconds())
 		}(url)
 	}
 	for range urls {
 		fmt.Printf("%s\n", <-ch)
 	}
-	fmt.Printf("%0.2fs elapsed\n", max_seconds)
+	fmt.Printf("%0.2fs elapsed\n", maxSeconds)
 }
