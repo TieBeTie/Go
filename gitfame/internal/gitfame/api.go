@@ -205,13 +205,13 @@ func formatJSONLines(stats []*AuthorStat, w io.Writer) error {
 	}
 
 	for _, stat := range stats {
-		jsonStat := jsonStat{
+		authorStat := jsonStat{
 			Name:    stat.Name,
 			Lines:   stat.Lines,
 			Commits: stat.Commits,
 			Files:   stat.Files,
 		}
-		data, err := json.Marshal(jsonStat)
+		data, err := json.Marshal(authorStat)
 		if err != nil {
 			return err
 		}
